@@ -1,11 +1,13 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-
-function HelloMessage({ name }) {
-  return <div>Hello {name}</div>;
-}
+import HelloMessage from './HelloMessage';
 
 ReactDOM.render(
-  <HelloMessage name="Taylor" />,
+  <HelloMessage name="Tayldsdsadsadsadsdsdsd" />,
   document.getElementById('app')
 );
+
+
+if (module.hot) {
+  module.hot.accept();
+}

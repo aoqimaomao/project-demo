@@ -10,17 +10,21 @@ const dist = '/dist/';
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'eval-cheap-module-source-map',
-  entry: path.resolve(__dirname, '../src/index'),
+  entry: [
+    'webpack-hot-middleware/client',
+    // 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+    './src/index.js',
+    path.resolve(__dirname, '../src/index')],
   output: {
     path: path.resolve(__dirname, dist),
     filename: 'bundle.js',
-    // publicPath: 'dist',
+    publicPath: '/',
     chunkFilename: 'bundle.[hash:4].js'
   },
   devServer: {
-    // proxy: { // proxy URLs to backend development server
-    //   '/api': 'http://localhost:8087'
-    // },
+    proxy: { // proxy URLs to backend development server
+      '/api': 'http://localhost:8087'
+    },
     contentBase: '../dist', // boolean | string | array, static file location
     compress: true, // enable gzip compression
     historyApiFallback: true, // true for index.html upon 404, object for multiple paths
@@ -29,6 +33,8 @@ module.exports = merge(common, {
     https: false, // true for self-signed, object for cert authority
     noInfo: true, // only errors & warns on hot reload
     // host: 8087
+    port: '8087',
+    inline:true,
     // ...
   },
   plugins: [
