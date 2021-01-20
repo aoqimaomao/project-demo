@@ -18,9 +18,9 @@ module.exports = merge(common, {
     chunkFilename: 'bundle.[hash:4].js'
   },
   devServer: {
-    proxy: { // proxy URLs to backend development server
-      '/api': 'http://localhost:8086'
-    },
+    // proxy: { // proxy URLs to backend development server
+    //   '/api': 'http://localhost:8087'
+    // },
     contentBase: '../dist', // boolean | string | array, static file location
     compress: true, // enable gzip compression
     historyApiFallback: true, // true for index.html upon 404, object for multiple paths
@@ -28,7 +28,7 @@ module.exports = merge(common, {
     hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
     https: false, // true for self-signed, object for cert authority
     noInfo: true, // only errors & warns on hot reload
-    host: 8086
+    // host: 8087
     // ...
   },
   plugins: [
@@ -54,7 +54,7 @@ module.exports = merge(common, {
     //   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     // }),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: './public/index.html',
       filename: 'index.html'
     }),
     new CleanWebpackPlugin(),

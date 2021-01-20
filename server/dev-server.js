@@ -23,7 +23,7 @@ const webpackDevMid = require('webpack-dev-middleware');
 const webpackHotMid = require('webpack-hot-middleware')
 const webpack = require('webpack');
 const app = express();
-const config = require('./webpack.dev');
+const config = require('../config/webpack.dev');
 
 // Object.keys(config.entry).forEach(function(name) {
 //     config.entry[name] = ['webpack-hot-middleware/client?noinfo=true&reload=true'].concat(config.entry[name])
@@ -34,6 +34,6 @@ app.use(webpackHotMid(compiler, {
     overlayStyles: true
 }))
  
-app.listen(8086);
+app.listen(8087);
 
 console.log('process.env.NODE_ENV', JSON.stringify(process.env.NODE_ENV));
